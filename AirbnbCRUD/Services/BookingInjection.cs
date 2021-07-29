@@ -23,7 +23,6 @@ namespace AirbnbCRUD.Services
     public class BookingInjection : IBooking
     {
         private readonly ApplicationContext _context;
-        var x = 10;
         public BookingInjection(ApplicationContext context)
         {
             _context = context;
