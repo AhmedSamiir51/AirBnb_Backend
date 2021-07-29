@@ -1,10 +1,7 @@
 {
   "ExpandedNodes": [
     "",
-    "\\AirbnbCRUD",
-    "\\AirbnbCRUD\\Controllers",
-    "\\AirbnbCRUD\\Model",
-    "\\AirbnbCRUD\\Services"
+    "\\AirbnbCRUD"
   ],
   "SelectedNode": "\\AirbnbCRUD.sln",
   "PreviewInSolutionExplorer": false
