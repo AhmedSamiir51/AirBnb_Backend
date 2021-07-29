@@ -20,7 +20,7 @@ namespace AirbnbCRUD.Services
         void DeleteAllBooingByPersonId(int PersonId);
         public bool BookingExists(int id);
     }
-    public class BookingInjection:IBooking
+    public class BookingInjection : IBooking
     {
         private readonly ApplicationContext _context;
         public BookingInjection(ApplicationContext context)
@@ -30,6 +30,18 @@ namespace AirbnbCRUD.Services
 
         public Booking CreateBooking(Booking book)
         {
+            if (CheckTimeValied(book.HouseId, book.StartBookingDate))
+            {
+                throw new InvalidOperationException();
+            }
+            if (CheckTimeValied(book.HouseId, book.EndBookingDate))
+            {
+                throw new InvalidOperationException();
+            }
+            if (CheckTimeValied(book.HouseId, book.StartBookingDate, book.EndBookingDate))
+            {
+                throw new InvalidOperationException();
+            }
             _context.Bookings.Add(book);
             _context.SaveChanges();
             return book;
@@ -38,7 +50,7 @@ namespace AirbnbCRUD.Services
         public void DeleteAllBooingByPersonId(int PersonId)
         {
             var books = GetAllBookingsByPersonId(PersonId);
-            foreach(var book in books)
+            foreach (var book in books)
             {
                 _context.Bookings.Remove(book);
             }
@@ -48,7 +60,7 @@ namespace AirbnbCRUD.Services
         public void DeleteAllBookingByHouseId(int HouseId)
         {
             var books = GetAllBookingByHouseId(HouseId);
-            foreach(var book in books)
+            foreach (var book in books)
             {
                 _context.Bookings.Remove(book);
             }
@@ -64,6 +76,18 @@ namespace AirbnbCRUD.Services
 
         public Booking EditBooking(Booking book)
         {
+            if (CheckTimeValied(book.HouseId, book.StartBookingDate))
+            {
+                throw new InvalidOperationException();
+            }
+            if (CheckTimeValied(book.HouseId, book.EndBookingDate))
+            {
+                throw new InvalidOperationException();
+            }
+            if (CheckTimeValied(book.HouseId, book.StartBookingDate, book.EndBookingDate))
+            {
+                throw new InvalidOperationException();
+            }
             _context.Entry(book).State = EntityState.Modified;
             _context.SaveChanges();
             return book;
@@ -93,5 +117,32 @@ namespace AirbnbCRUD.Services
         {
             return _context.Bookings.Any(e => e.BookingId == id);
         }
+        private bool CheckTimeValied(int id, DateTime date)
+        {
+            if (date < DateTime.Today)
+            {
+                return false;
+            }
+            var DateValues = _context.Bookings.Where(a => a.HouseId == id && a.StartBookingDate >= date && a.EndBookingDate <= date);
+            if (DateValues != null)
+            {
+                return false;
+            }
+            return true;
+        }
+        private bool CheckTimeValied(int id, DateTime startDate, DateTime endDate)
+        {
+            if (startDate > endDate)
+            {
+                return false;
+            }
+            var DateValues = _context.Bookings.Where(a => a.HouseId == id && a.StartBookingDate <= startDate && a.EndBookingDate >= endDate);
+            if (DateValues != null)
+            {
+                return false;
+            }
+            return true;
+        }
     }
+
 }
