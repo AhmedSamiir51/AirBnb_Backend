@@ -33,8 +33,8 @@ namespace AirbnbCRUD.Model
         [ForeignKey("Person")]
         [Required]
         public int PersonId { get; set; }
-        [JsonIgnore]
 
+        [JsonIgnore]
         public virtual Person Person { get; set; }
         [JsonIgnore]
         public virtual ICollection<HousePhoto> HousePhotos { get; set; } = new HashSet<HousePhoto>();
