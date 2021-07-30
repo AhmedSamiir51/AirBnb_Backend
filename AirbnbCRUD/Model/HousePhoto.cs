@@ -16,8 +16,8 @@ namespace AirbnbCRUD.Model
 
         [Display(Name = "House Photo")]
         public  string HousePhotos { get; set; }
-        [JsonIgnore]
 
+        [JsonIgnore]
         public virtual House House { get; set; }
     }
 }
