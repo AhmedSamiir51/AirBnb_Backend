@@ -86,7 +86,6 @@ namespace AirbnbCRUD.Controllers
         public ActionResult<House> PostHouse([FromForm] House house)
         {
             _house.CreateHouse(house);
-
             return Ok(house);
         }
 
