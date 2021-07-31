@@ -25,7 +25,7 @@ namespace AirbnbCRUD.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<HousePhoto>> GetHousePhotos()
         {
-            return _housePhoto.GetAllHousePhotos();
+            return _housePhoto.GetAllHousePhotos().ToArray();
         }
 
         // GET: api/HousePhotoes/5
@@ -39,7 +39,7 @@ namespace AirbnbCRUD.Controllers
                 return NotFound();
             }
 
-            return housePhoto;
+            return housePhoto.ToArray();
         }
         // GET: api/HousePhotoes/5
         //[HttpGet("{id}")]

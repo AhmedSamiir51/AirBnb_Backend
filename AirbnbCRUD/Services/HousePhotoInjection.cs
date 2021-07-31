@@ -9,8 +9,8 @@ namespace AirbnbCRUD.Services
 {
     public interface IHousePhoto
     {
-        List<HousePhoto> GetAllHousePhotos();
-        List<HousePhoto> GetHousePhotos(int id);
+        IEnumerable<HousePhoto> GetAllHousePhotos();
+        IEnumerable<HousePhoto> GetHousePhotos(int id);
         HousePhoto GetHousePhoto(int HouseId, string HousePhoto);
         HousePhoto CreateHousePhoto(HousePhoto housePhoto);
         HousePhoto EditHousephoto(HousePhoto housePhoto);
@@ -57,9 +57,9 @@ namespace AirbnbCRUD.Services
             return housePhoto;
         }
 
-        public List<HousePhoto> GetAllHousePhotos()
+        public IEnumerable<HousePhoto> GetAllHousePhotos()
         {
-            return _context.HousePhotos.ToList();
+            return _context.HousePhotos.ToArray();
         }
 
         public HousePhoto GetHousePhoto(int HouseId, string HousePhoto)
@@ -67,9 +67,9 @@ namespace AirbnbCRUD.Services
             return _context.HousePhotos.FirstOrDefault(a => a.HouseId == HouseId && a.HousePhotos == HousePhoto);
         }
 
-        public List<HousePhoto> GetHousePhotos(int id)
+        public IEnumerable<HousePhoto> GetHousePhotos(int id)
         {
-            return _context.HousePhotos.Where(a => a.HouseId == id).ToList();
+            return _context.HousePhotos.Where(a => a.HouseId == id).ToArray();
         }
 
         public bool HousePhotoExists(int id, string housePhotoNumber)
