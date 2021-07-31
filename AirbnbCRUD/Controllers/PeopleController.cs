@@ -33,7 +33,7 @@ namespace AirbnbCRUD.Controllers
         }
 
         // GET: api/People
-        [HttpGet("ahmed")]
+        [HttpGet]
         public ActionResult<IEnumerable<Person>> GetPeople()
         {
             return _person.GetAllPeople();

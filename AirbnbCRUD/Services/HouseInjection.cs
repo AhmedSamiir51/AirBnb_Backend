@@ -39,11 +39,30 @@ namespace AirbnbCRUD.Services
             
             _context.Houses.Add(house);
             _context.SaveChanges();
-            DirectoryInfo di = Directory.CreateDirectory($"Images\\HouseImages\\{house.HouseId}");
 
             if (house.HousePhotoFiles != null)
             {
-                for(var i = 0; i < house.HousePhotoFiles.Length; i++)
+                try
+                {
+                    string[] files = Directory.GetFiles($"Images\\HouseImages\\{house.HouseId}");
+                    if (files != null)
+                    {
+                        foreach (var file in files)
+                        {
+                            File.SetAttributes(file, FileAttributes.Normal);
+                            File.Delete(file);
+                        }
+                        Directory.Delete($"Images\\HouseImages\\{house.HouseId}");
+                    }
+                }
+                catch
+                {
+
+                }
+                
+                var RelatedPath = $"Images\\HouseImages\\{house.HouseId}";
+                DirectoryInfo di = Directory.CreateDirectory(RelatedPath);
+                for (var i = 0; i < house.HousePhotoFiles.Length; i++)
                 {
                     var houseFile = house.HousePhotoFiles[i];
                     var houseName = houseFile.FileName.Split('.');
@@ -52,7 +71,7 @@ namespace AirbnbCRUD.Services
                     var Photo = ImageStuff.HandleImage(houseFile);
                     Photo.Write(newHouseName);
                     File.Move(newHouseName, Path);
-                    _context.HousePhotos.Add(new HousePhoto() { HouseId = house.HouseId, HousePhotos = Path });
+                    _context.HousePhotos.Add(new HousePhoto() { HouseId = house.HouseId, HousePhotos = RelatedPath });
                 }
             }
             _context.SaveChanges();

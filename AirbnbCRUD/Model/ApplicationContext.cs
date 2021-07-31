@@ -24,6 +24,8 @@ namespace AirbnbCRUD.Model
             modelBuilder.Entity<PersonFeedback>().HasOne(p => p.PersonAsHost).WithMany(p => p.FeedbacksAsHost).HasForeignKey("PersonHostId").IsRequired();
             modelBuilder.Entity<PersonFeedback>().HasOne(p => p.PersonAsCustomer).WithMany(p => p.FeedbacksAsCustomer).HasForeignKey("PersonCustomerId").IsRequired();
             modelBuilder.Entity<HousePhoto>().HasKey(p => new { p.HouseId, p.HousePhotos });
+;
+            ;
         }
     }
 }

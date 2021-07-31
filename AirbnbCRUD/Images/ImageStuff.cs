@@ -39,9 +39,9 @@ namespace AirbnbCRUD.Images
 
 
             }
-            catch
+            catch(Exception e)
             {
-                throw;
+                throw e;
             }
         }
 
