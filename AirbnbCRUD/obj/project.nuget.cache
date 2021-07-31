@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hYlnwkbMVagTgJIOGugDshLBrW1HZTUrIwgJwEH4VC9SS5xlEmlDvfB8bmHpW5iccnIisC8upwpfXD92WDHqNg==",
+  "dgSpecHash": "a90rt25YBlCH/Bm2Vnd/eMvK5B2RmhHrDrcq8utimKhrqGmI24MvER7wBoWXyDBqDoR51Vx/nygZ4IAD1XC5Sw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Lenovo\\Desktop\\AirbnbApi\\AirbnbCRUD\\AirbnbCRUD\\AirbnbCRUD.csproj",
+  "projectFilePath": "D:\\ITI projects\\Final\\Back\\AirbnbCRUD\\AirbnbCRUD.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lenovo\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\magick.net-q16-anycpu\\8.1.0\\magick.net-q16-anycpu.8.1.0.nupkg.sha512",

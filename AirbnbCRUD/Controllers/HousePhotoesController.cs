@@ -113,13 +113,13 @@ namespace AirbnbCRUD.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteHousePhoto(int id,string housePhotoNumber)
         {
-            var housePhoto = _housePhoto.GetHousePhoto(id,housePhotoNumber);
+            var housePhoto = _housePhoto.GetHousePhoto(housePhotoNumber);
             if (housePhoto == null)
             {
                 return NotFound();
             }
 
-            _housePhoto.DeleteHousePhoto(id, housePhotoNumber);
+            _housePhoto.DeleteHousePhoto(housePhotoNumber);
 
             return NoContent();
         }

@@ -11,10 +11,10 @@ namespace AirbnbCRUD.Services
     {
         List<HousePhoto> GetAllHousePhotos();
         HousePhoto[] GetHousePhotos(int id);
-        HousePhoto GetHousePhoto(int HouseId, string HousePhoto);
+        HousePhoto GetHousePhoto(string HousePhoto);
         HousePhoto CreateHousePhoto(HousePhoto housePhoto);
         HousePhoto EditHousephoto(HousePhoto housePhoto);
-        void DeleteHousePhoto(int HouseId,string HousePhoto);
+        void DeleteHousePhoto(string HousePhoto);
         void DeleteHousePhotos(int HouseId);
         bool HousePhotoExists(int id,string housePhotoNumber);
     }
@@ -33,9 +33,9 @@ namespace AirbnbCRUD.Services
             return housePhoto;
         }
 
-        public void DeleteHousePhoto(int HouseId, string HousePhoto)
+        public void DeleteHousePhoto(string HousePhoto)
         {
-            var photo = GetHousePhoto(HouseId, HousePhoto);
+            var photo = GetHousePhoto(HousePhoto);
             _context.HousePhotos.Remove(photo);
             _context.SaveChanges();
         }
@@ -62,9 +62,9 @@ namespace AirbnbCRUD.Services
             return _context.HousePhotos.ToList();
         }
 
-        public HousePhoto GetHousePhoto(int HouseId, string HousePhoto)
+        public HousePhoto GetHousePhoto(string HousePhoto)
         {
-            return _context.HousePhotos.FirstOrDefault(a => a.HouseId == HouseId && a.HousePhotos == HousePhoto);
+            return _context.HousePhotos.FirstOrDefault(a => a.HousePhotos == HousePhoto);
         }
 
         public HousePhoto[] GetHousePhotos(int id)
