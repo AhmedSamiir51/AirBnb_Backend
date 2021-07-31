@@ -71,7 +71,7 @@ namespace AirbnbCRUD.Services
                     var Photo = ImageStuff.HandleImage(houseFile);
                     Photo.Write(newHouseName);
                     File.Move(newHouseName, Path);
-                    _context.HousePhotos.Add(new HousePhoto() { HouseId = house.HouseId, HousePhotos = RelatedPath });
+                    _context.HousePhotos.Add(new HousePhoto() { HouseId = house.HouseId, HousePhotos = RelatedPath + "\\" + newHouseName });
                 }
             }
             _context.SaveChanges();

@@ -14,10 +14,13 @@ namespace AirbnbCRUD.Model
         [Key]
 
         public int HouseId { get; set; }
+
         [Required]
         public string HouseCity { get; set; }
-        //[Required]
-        //public string Title { get; set; }
+
+        [Required]
+        public string Title { get; set; }
+
         [Required]
         public string HouseCountry { get; set; }
         [Required]
