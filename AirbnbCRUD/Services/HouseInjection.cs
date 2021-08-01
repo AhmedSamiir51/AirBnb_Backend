@@ -44,6 +44,7 @@ namespace AirbnbCRUD.Services
             {
                 try
                 {
+
                     string[] files = Directory.GetFiles($"Images\\HouseImages\\{house.HouseId}");
                     if (files != null)
                     {
@@ -71,6 +72,7 @@ namespace AirbnbCRUD.Services
                     var Photo = ImageStuff.HandleImage(houseFile);
                     Photo.Write(newHouseName);
                     File.Move(newHouseName, Path);
+                    _context.Houses.Add(new House() { HouseId = house.HouseId, HousePhotoName = RelatedPath + "\\" + newHouseName });
                     _context.HousePhotos.Add(new HousePhoto() { HouseId = house.HouseId, HousePhotos = RelatedPath + "\\" + newHouseName });
                 }
             }

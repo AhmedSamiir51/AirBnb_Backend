@@ -32,6 +32,7 @@ namespace AirbnbCRUD.Model
 
         [NotMapped]
         public IFormFile[] HousePhotoFiles { get; set; }
+        public string HousePhotoName { get; set; }
 
         [ForeignKey("Person")]
         [Required]

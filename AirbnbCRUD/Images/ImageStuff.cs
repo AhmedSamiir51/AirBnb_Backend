@@ -31,7 +31,7 @@ namespace AirbnbCRUD.Images
                 byte[] bytes = (byte[])(new ImageConverter()).ConvertTo(img, typeof(byte[]));
 
                 var NewImage = new MagickImage(bytes);
-                NewImage.Resize(size, size);
+                
                 NewImage.Strip();
                 NewImage.Quality = quality;
                 output = NewImage;

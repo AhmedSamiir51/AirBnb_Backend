@@ -41,6 +41,7 @@ namespace AirbnbCRUD.Controllers
 
             return housePhoto.ToArray();
         }
+
         // GET: api/HousePhotoes/5
         //[HttpGet("{id}")]
         //public ActionResult<HousePhoto> GetHousePhoto(int id,string housePhotoNumber)
