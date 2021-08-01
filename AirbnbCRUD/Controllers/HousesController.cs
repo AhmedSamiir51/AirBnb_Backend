@@ -84,7 +84,7 @@ namespace AirbnbCRUD.Controllers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public ActionResult<House> PostHouse([FromForm] House house)
-        {
+        { 
             _house.CreateHouse(house);
             return Ok(house);
         }
