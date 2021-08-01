@@ -63,6 +63,10 @@ namespace AirbnbCRUD.Services
                 
                 var RelatedPath = $"Images\\HouseImages\\{house.HouseId}";
                 DirectoryInfo di = Directory.CreateDirectory(RelatedPath);
+                if (house.HousePhotoFiles.Length != 5)
+                {
+                    throw new Exception();
+                }
                 for (var i = 0; i < house.HousePhotoFiles.Length; i++)
                 {
                     var houseFile = house.HousePhotoFiles[i];
