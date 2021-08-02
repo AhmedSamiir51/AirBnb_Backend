@@ -28,7 +28,7 @@ namespace AirbnbCRUD.Model
         [Required]
         public string HouseNumber { get; set; }
         [Required]
-        public string HousePrice { get; set; }
+        public int HousePrice { get; set; }
 
         [NotMapped]
         public IFormFile[] HousePhotoFiles { get; set; }
