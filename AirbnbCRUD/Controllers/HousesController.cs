@@ -50,6 +50,18 @@ namespace AirbnbCRUD.Controllers
 
             return house;
         }
+        [HttpGet("city/{city}/{price}")]
+        public ActionResult<House[]> GetHouseAfterFilterPrice(string city,int price)
+        {
+            var house = _house.FilterHouses(city,price);
+
+            if (house == null)
+            {
+                return NotFound();
+            }
+
+            return house.ToArray();
+        }
 
         // PUT: api/Houses/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

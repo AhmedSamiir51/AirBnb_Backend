@@ -19,6 +19,7 @@ namespace AirbnbCRUD.Services
         House CreateHouse(House house);
         House EditHouse(House house);
         void DeleteHouse(int id);
+        IEnumerable<House> FilterHouses(string city, int price);
         bool HouseExists(int id);
     }
     public class HouseInjection:IHouse
@@ -154,6 +155,13 @@ namespace AirbnbCRUD.Services
             {
                 throw;
             }
+        }
+
+        public IEnumerable<House> FilterHouses(string city, int price)
+        {
+            var HouseInCity = GetAllHousesInCity(city);
+            var HouseAfterFilters = HouseInCity.Where(h => h.HousePrice <= price);
+            return HouseAfterFilters;
         }
 
         public IEnumerable<House> GetAllHouses()
