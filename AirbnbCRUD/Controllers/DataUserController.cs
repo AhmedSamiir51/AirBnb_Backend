@@ -33,7 +33,8 @@ namespace AirbnbCRUD.Controllers
             var user =  _person.GetPerson(ss);
             var data = new
             {
-                user.PersonId
+                user.PersonId,
+                user.PersonFirstName
             };
 
 
