@@ -26,6 +26,8 @@ namespace AirbnbCRUD.Model
         [Required]
         public string HouseStreet { get; set; }
         [Required]
+        public string HouseDescription { get; set; }
+        [Required]
         public string HouseNumber { get; set; }
         [Required]
         public int HousePrice { get; set; }
