@@ -37,6 +37,16 @@ namespace AirbnbCRUD.Controllers
             }
             return houses;
         }
+        [HttpGet("person/{id}")]
+        public ActionResult<IEnumerable<House>> GetHousesByPerson(int id)
+        {
+            var houses = _house.GetAllHousesByPersonId(id).ToArray();
+            if (houses == null)
+            {
+                return NotFound();
+            }
+            return houses;
+        }
         // GET: api/Houses/5
         [HttpGet("{id}")]
         public ActionResult<House> GetHouse(int id)
