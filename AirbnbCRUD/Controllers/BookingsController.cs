@@ -28,6 +28,17 @@ namespace AirbnbCRUD.Controllers
             return _booking.GetAllBookings();
         }
 
+        [HttpGet("person/{id}")]
+        public ActionResult<IEnumerable<Booking>> GetBookingsForPerson(int id)
+        {
+            return _booking.GetAllBookingsByPersonId(id).ToArray();
+        }
+        [HttpGet("House/{id}")]
+        public ActionResult<IEnumerable<Booking>> GetBookingsForHouse(int id)
+        {
+            return _booking.GetAllBookingByHouseId(id).ToArray();
+        }
+
         // GET: api/Bookings/5
         [HttpGet("{id}")]
         public ActionResult<Booking> GetBooking(int id)

@@ -15,6 +15,7 @@ namespace AirbnbCRUD.Services
     {
         IEnumerable<House> GetAllHouses();
         IEnumerable<House> GetAllHousesInCity(string city);
+        IEnumerable<House> GetAllHousesByPersonId(int id);
         House GetHouse(int id);
         House CreateHouse(House house);
         House EditHouse(House house);
@@ -155,6 +156,12 @@ namespace AirbnbCRUD.Services
         public IEnumerable<House> GetAllHouses()
         {
             return _context.Houses.ToArray();
+        }
+
+        public IEnumerable<House> GetAllHousesByPersonId(int id)
+        {
+            var houses = GetAllHouses().Where(x => x.PersonId == id).ToArray();
+            return houses;
         }
 
         public IEnumerable<House> GetAllHousesInCity(string city)
