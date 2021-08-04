@@ -10,8 +10,8 @@ namespace AirbnbCRUD.Services
     public interface IBooking
     {
         List<Booking> GetAllBookings();
-        List<Booking> GetAllBookingsByPersonId(int PersonId);
-        List<Booking> GetAllBookingByHouseId(int HouseId);
+        IEnumerable<Booking> GetAllBookingsByPersonId(int PersonId);
+        IEnumerable<Booking> GetAllBookingByHouseId(int HouseId);
         Booking GetBooking(int BookingId);
         Booking CreateBooking(Booking book);
         Booking EditBooking(Booking book);
@@ -93,20 +93,21 @@ namespace AirbnbCRUD.Services
             return book;
         }
 
-        public List<Booking> GetAllBookingByHouseId(int HouseId)
+        public IEnumerable<Booking> GetAllBookingByHouseId(int HouseId)
         {
-            var books = _context.Bookings.Where(a => a.HouseId == HouseId).ToList();
+            var books = _context.Bookings.Where(a => a.HouseId == HouseId).ToArray();
             return books;
         }
 
-        public List<Booking> GetAllBookings()
+        public IEnumerable<Booking> GetAllBookings()
         {
             return _context.Bookings.ToList();
         }
 
-        public List<Booking> GetAllBookingsByPersonId(int PersonId)
+        public IEnumerable<Booking> GetAllBookingsByPersonId(int PersonId)
         {
-            return _context.Bookings.Where(a => a.PersonId == PersonId).ToList();
+            var books = _context.Bookings.Where(a => a.PersonId == PersonId).ToArray();
+            return books;
         }
 
         public Booking GetBooking(int BookingId)
